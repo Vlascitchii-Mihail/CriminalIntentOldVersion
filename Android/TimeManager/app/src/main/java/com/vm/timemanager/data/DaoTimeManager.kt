@@ -6,17 +6,18 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 abstract class DaoTimeManager {
     @Insert
-    abstract fun addTask(task: Task)
+    abstract suspend fun addTask(task: Task)
 
     @Update
-    abstract fun updateTask(task: Task)
+    abstract suspend fun updateTask(task: Task)
 
     @Delete
-    abstract fun deleteTask(task: Task)
+    abstract suspend fun deleteTask(task: Task)
 
     //the Room has already use background threads for returning LiveData
     @Query("SELECT * FROM tasks WHERE day = :taskDay ORDER BY id DESC")
@@ -24,6 +25,9 @@ abstract class DaoTimeManager {
 
     //the Room has already use background threads for returning LiveData
     @Query("SELECT * FROM tasks WHERE id = :taskId")
-    abstract fun getTask(taskId: Int): Task
+    abstract suspend fun getTask(taskId: Int): Task
+
+    @Query("SELECT * FROM tasks WHERE id = :taskId")
+    abstract fun getTaskFlow(taskId: Int): Flow<Task>
 
 }

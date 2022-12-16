@@ -68,11 +68,11 @@ class NewTaskAdding : Fragment() {
 
         binding.apply {
             if (args.id != 0) {
-                viewModel.getTask(args.id)
+                viewModel.getTaskFlow(args.id)
                 addButton.visibility = View.GONE
             }
             else {
-                viewModel.task.value = Task()
+                viewModel.getNewTask()
                 saveButton.visibility = View.GONE
             }
 
@@ -81,48 +81,48 @@ class NewTaskAdding : Fragment() {
 
             buttonStartDate.setOnClickListener {
                 findNavController().navigate(
-                    NewTaskAddingDirections.selectDate(viewModel.task.value?.startTime ?: LocalDateTime.now(), DatePickerFragment.REQUEST_START_DATE)
+                    NewTaskAddingDirections.selectDate(viewModel.taskFlow.value.startTime ?: LocalDateTime.now(), DatePickerFragment.REQUEST_START_DATE)
                 )
             }
 
             buttonEndDate.setOnClickListener {
                 findNavController().navigate(
-                    NewTaskAddingDirections.selectDate(viewModel.task.value?.endTime ?: viewModel.task.value?.startTime ?: LocalDateTime.now(), DatePickerFragment.REQUEST_END_DATE)
+                    NewTaskAddingDirections.selectDate(viewModel.taskFlow.value.endTime ?: viewModel.taskFlow.value.startTime ?: LocalDateTime.now(), DatePickerFragment.REQUEST_END_DATE)
                 )
             }
 
             buttonStartTime.setOnClickListener {
                 findNavController().navigate(
-                    NewTaskAddingDirections.selectTime(viewModel.task.value?.startTime ?: LocalDateTime.now(), TimePickerFragment.REQUEST_START_TIME)
+                    NewTaskAddingDirections.selectTime(viewModel.taskFlow.value.startTime ?: LocalDateTime.now(), TimePickerFragment.REQUEST_START_TIME)
                 )
             }
 
             buttonEndTime.setOnClickListener {
                 findNavController().navigate(
-                    NewTaskAddingDirections.selectTime(viewModel.task.value?.endTime ?: viewModel.task.value?.startTime ?: LocalDateTime.now(), TimePickerFragment.REQUEST_END_TIME)
+                    NewTaskAddingDirections.selectTime(viewModel.taskFlow.value.endTime ?: viewModel.taskFlow.value.startTime ?: LocalDateTime.now(), TimePickerFragment.REQUEST_END_TIME)
                 )
             }
 
             addButton.setOnClickListener {
                 viewModel.addTask(Task(
                     day = viewModel.day,
-                    startTime = viewModel.task.value?.startTime,
-                    endTime = viewModel.task.value?.endTime,
-                    taskName = viewModel.task.value?.taskName ?: "No name",
-                    taskDescription = viewModel.task.value?.taskDescription ?: "No description"))
+                    startTime = viewModel.taskFlow.value.startTime,
+                    endTime = viewModel.taskFlow.value.endTime,
+                    taskName = viewModel.taskFlow.value.taskName ?: "No name",
+                    taskDescription = viewModel.taskFlow.value.taskDescription ?: "No description"))
                 navController.popBackStack()
 
-                viewModel.task.value?.startTime?.let { it1 ->
+                viewModel.taskFlow.value.startTime?.let { it1 ->
                     scheduleNotification(
-                        viewModel.task.value?.taskName ?: "No name",
-                        viewModel.task.value?.taskDescription ?: "No description",
+                        viewModel.taskFlow.value.taskName ?: "No name",
+                        viewModel.taskFlow.value.taskDescription ?: "No description",
                         it1
                     )
                 }
             }
 
             saveButton.setOnClickListener {
-                viewModel.task.value?.let {
+                viewModel.taskFlow.value.let {
                     viewModel.updateTask(it)
                     navController.popBackStack()
                 }
@@ -145,41 +145,41 @@ class NewTaskAdding : Fragment() {
 //        val day = NewTaskAddingArgs.fromBundle(requireArguments()).day
 
         setFragmentResultListener(DatePickerFragment.REQUEST_START_DATE) { _, bundle ->
-            viewModel.task.value?.startTime = bundle.getSerializable(DatePickerFragment.BUNDLE_KEY_DATE) as LocalDateTime
+            viewModel.taskFlow.value.startTime = bundle.getSerializable(DatePickerFragment.BUNDLE_KEY_DATE) as LocalDateTime
 //            Toast.makeText(requireContext(), "Date:  ${viewModel.task.value}", Toast.LENGTH_SHORT).show()
 //            this.activity?.recreate()
 
-            binding.startDate.text = viewModel.task.value?.startTime.let {
+            binding.startDate.text = viewModel.taskFlow.value.startTime.let {
                 it?.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
             }
         }
 
         setFragmentResultListener(DatePickerFragment.REQUEST_END_DATE) { _, bundle ->
-            viewModel.task.value?.endTime = bundle.getSerializable(DatePickerFragment.BUNDLE_KEY_DATE) as LocalDateTime
+            viewModel.taskFlow.value.endTime = bundle.getSerializable(DatePickerFragment.BUNDLE_KEY_DATE) as LocalDateTime
 //            Toast.makeText(requireContext(), "Date:  ${viewModel.task.value}", Toast.LENGTH_SHORT).show()
 //            this.activity?.recreate()
 
-            binding.endDate.text = viewModel.task.value?.endTime.let {
+            binding.endDate.text = viewModel.taskFlow.value.endTime.let {
                 it?.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
             }
         }
 
         setFragmentResultListener(TimePickerFragment.REQUEST_START_TIME) { _, bundle ->
-            viewModel.task.value?.startTime = bundle.getSerializable(TimePickerFragment.BUNDLE_KEY_TIME) as LocalDateTime
+            viewModel.taskFlow.value.startTime = bundle.getSerializable(TimePickerFragment.BUNDLE_KEY_TIME) as LocalDateTime
 //            Toast.makeText(requireContext(), "Date:  ${viewModel.task.value}", Toast.LENGTH_SHORT).show()
 //            this.activity?.recreate()
 
-            binding.startTime.text = viewModel.task.value?.startTime.let {
+            binding.startTime.text = viewModel.taskFlow.value.startTime.let {
                 it?.format(DateTimeFormatter.ofPattern("HH:mm:ss"))
             }
         }
 
         setFragmentResultListener(TimePickerFragment.REQUEST_END_TIME) { _, bundle ->
-            viewModel.task.value?.endTime = bundle.getSerializable(TimePickerFragment.BUNDLE_KEY_TIME) as LocalDateTime
+            viewModel.taskFlow.value.endTime = bundle.getSerializable(TimePickerFragment.BUNDLE_KEY_TIME) as LocalDateTime
 //            Toast.makeText(requireContext(), "Date:  ${viewModel.task.value}", Toast.LENGTH_SHORT).show()
 //            this.activity?.recreate()
 
-            binding.endTime.text = viewModel.task.value?.endTime.let {
+            binding.endTime.text = viewModel.taskFlow.value.endTime.let {
                 it?.format(DateTimeFormatter.ofPattern("HH:mm:ss"))
             }
         }

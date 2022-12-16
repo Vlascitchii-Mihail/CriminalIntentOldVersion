@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-            android:text="@={viewModelBind.task.taskName}"
+            android:text="@={viewModelBind.taskFlow.taskName}"
             android:textSize="20sp"
             tools:text="This is a new task"
             android:layout_marginHorizontal="5dp"
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-            android:text="@={viewModelBind.task.taskDescription}"
+            android:text="@={viewModelBind.taskFlow.taskDescription}"
             tools:text="This is the task description"
             android:layout_marginHorizontal="5dp"
             android:layout_marginVertical="10dp"
@@ -61,7 +61,7 @@
             android:layout_marginHorizontal="5dp"
             android:layout_marginVertical="10dp"
             android:layout_marginTop="8dp"
-            android:text='@{viewModelBind.task.startTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))}'
+            android:text='@{viewModelBind.taskFlow.startTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))}'
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/task_description"
@@ -75,7 +75,7 @@
             android:layout_marginHorizontal="5dp"
             android:layout_marginVertical="10dp"
             android:layout_marginTop="8dp"
-            android:text='@{viewModelBind.task.startTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"))}'
+            android:text='@{viewModelBind.taskFlow.startTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"))}'
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@id/button_start_time"
             app:layout_constraintTop_toBottomOf="@id/task_description"
@@ -111,7 +111,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_start_time"
             android:textSize="20sp"
-            android:text='@{viewModelBind.task.endTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))}'
+            android:text='@{viewModelBind.taskFlow.endTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))}'
             tools:text="End date: 12.12.22"
             android:layout_marginHorizontal="5dp"
             android:layout_marginVertical="10dp"/>
@@ -124,7 +124,7 @@
             android:layout_marginVertical="10dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:text='@{viewModelBind.task.endTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"))}'
+            android:text='@{viewModelBind.taskFlow.endTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"))}'
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@id/button_end_time"
             app:layout_constraintTop_toBottomOf="@id/button_start_time"

@@ -2,36 +2,44 @@ package com.vm.timemanager.data
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 class RepositoryTimeManager(private val daoTimeManager: DaoTimeManager) {
 
     suspend fun addTask(task: Task) {
-        withContext(Dispatchers.Default) {
+//        withContext(Dispatchers.Default) {
             daoTimeManager.addTask(task)
-        }
+//        }
     }
 
     suspend fun updateTask(task: Task) {
-        withContext(Dispatchers.Default){
+//        withContext(Dispatchers.Default){
             daoTimeManager.updateTask(task)
-        }
+//        }
     }
 
     suspend fun deleteTask(task: Task) {
-        withContext(Dispatchers.Default) {
+//        withContext(Dispatchers.Default) {
             daoTimeManager.deleteTask(task)
-        }
+//        }
     }
 
     fun getAllTasks(taskDay: String) = daoTimeManager.getAllTasks(taskDay)
 
     suspend fun getTask(taskId: Int): Task {
-        val task: Task
-        withContext(Dispatchers.Default) {
-            task = daoTimeManager.getTask(taskId)
-        }
-        return task
+//        val task: Task
+//        withContext(Dispatchers.Default) {
+            return  daoTimeManager.getTask(taskId)
+//        }
+//        return task
+    }
+    fun getTaskFlow(taskId: Int): Flow<Task> {
+//        val task: Task
+//        withContext(Dispatchers.Default) {
+        return  daoTimeManager.getTaskFlow(taskId)
+//        }
+//        return task
     }
 
     companion object {

@@ -10,6 +10,9 @@ import com.vm.timemanager.data.DatabaseTimeManager
 import com.vm.timemanager.data.RepositoryTimeManager
 import com.vm.timemanager.data.Task
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -17,6 +20,14 @@ class NewTaskAddingViewModel(application: Application): AndroidViewModel(applica
     private val repository: RepositoryTimeManager
 
     var task: MutableLiveData<Task> = MutableLiveData<Task>(Task())
+    private val _taskStateFlow: MutableStateFlow<Task> = MutableStateFlow(Task())
+    val taskFlow: StateFlow<Task>
+        get() = _taskStateFlow.asStateFlow()
+
+    fun getNewTask() {
+        _taskStateFlow.value = Task()
+    }
+
     var day: String? = null
 
     init {
@@ -32,11 +43,21 @@ class NewTaskAddingViewModel(application: Application): AndroidViewModel(applica
         }
     }
 
-    fun getTask(taskId: Int) {
+//    fun getTask(taskId: Int) {
+//        viewModelScope.launch {
+//            withContext(Dispatchers.Main) {
+//                _taskStateFlow.value = repository.getTask(taskId)
+//            }
+//        }
+//    }
+
+    fun getTaskFlow(taskId: Int) {
         viewModelScope.launch {
-            withContext(Dispatchers.Main) {
-                task.value = repository.getTask(taskId)
-            }
+//            withContext(Dispatchers.Main) {
+                repository.getTaskFlow(taskId).collect {
+                    _taskStateFlow.value = it
+                }
+//            }
         }
     }
 
@@ -48,7 +69,7 @@ class NewTaskAddingViewModel(application: Application): AndroidViewModel(applica
 
     fun deleteTask() {
         viewModelScope.launch {
-            task.value?.let {
+            this@NewTaskAddingViewModel.taskFlow.value.let {
                 repository.deleteTask(it)
             }
         }
