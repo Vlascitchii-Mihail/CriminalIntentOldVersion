@@ -30,6 +30,7 @@ class SevenDaysFragment : Fragment() {
 
         binding.apply {
             monday.setOnClickListener {
+
                 val action = SevenDaysFragmentDirections.actionSevenDaysFragmentToDaysFragment(monday.text.toString())
                 fragment.findNavController().navigate(action)
             }

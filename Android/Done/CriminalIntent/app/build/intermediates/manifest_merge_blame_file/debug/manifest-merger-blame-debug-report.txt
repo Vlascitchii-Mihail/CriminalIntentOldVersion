@@ -1,0 +1,159 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.bignerdranch.android.criminalintent"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml
+10
+11    <!-- user's permissions -->
+12    <!-- dangerous permission - run time permission -->
+13    <uses-permission android:name="android.permission.READ_CONTACTS" />
+13-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:8:5-71
+13-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:8:22-69
+14
+15    <!-- dangerous permission - run time permission -->
+16    <uses-permission android:name="android.permission.CALL_PHONE" />
+16-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:11:5-68
+16-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:11:22-66
+17
+18    <!-- dangerous permission - run time permission -->
+19    <uses-permission android:name="android.permission.CAMERA" />
+19-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:14:5-64
+19-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:14:22-62
+20
+21    <!--
+22        announcing that the app uses the camera
+23        android:required="false" - announcing that the app can work without the camera
+24    -->
+25    <uses-feature
+25-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:18:5-19:35
+26        android:name="android.hardware.camera2"
+26-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:18:19-58
+27        android:required="false" />
+27-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:19:9-33
+28    <!-- check if the system have a contact app -->
+29    <queries>
+29-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:61:5-66:15
+30        <intent>
+30-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:62:9-65:18
+31            <action android:name="android.intent.action.PICK" />
+31-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:63:13-64
+31-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:63:21-62
+32
+33            <data android:mimeType="vnd.android.cursor.dir/contact" />
+33-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:64:13-70
+33-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:64:19-68
+34        </intent>
+35    </queries>
+36
+37    <!--
+38android:name=".CriminalIntentApplication" accepting using the
+39CriminalIntentApplication class for creation a new CrimeRepository's object
+40    -->
+41    <application
+41-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:23:5-59:19
+42        android:name="com.bignerdranch.android.criminalintent.CriminalIntentApplication"
+42-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:24:9-50
+43        android:allowBackup="true"
+43-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:25:9-35
+44        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+44-->[androidx.core:core:1.8.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\5b4f0ebc2de8ae8b764bc452a6c78125\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+45        android:dataExtractionRules="@xml/data_extraction_rules"
+45-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:26:9-65
+46        android:debuggable="true"
+47        android:fullBackupContent="@xml/backup_rules"
+47-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:27:9-54
+48        android:icon="@mipmap/ic_launcher"
+48-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:28:9-43
+49        android:label="@string/app_name"
+49-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:29:9-41
+50        android:roundIcon="@mipmap/ic_launcher_round"
+50-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:30:9-54
+51        android:supportsRtl="true"
+51-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:31:9-35
+52        android:testOnly="true"
+53        android:theme="@style/Theme.CriminalIntent" >
+53-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:32:9-52
+54        <activity
+54-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:34:9-43:20
+55            android:name="com.bignerdranch.android.criminalintent.MainActivity"
+55-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:35:13-41
+56            android:exported="true" >
+56-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:36:13-36
+57            <intent-filter>
+57-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:37:13-42:29
+58
+59                <!-- shows intent action -->
+60                <action android:name="android.intent.action.MAIN" />
+60-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:40:17-69
+60-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:40:25-66
+61
+62                <category android:name="android.intent.category.LAUNCHER" />
+62-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:41:17-77
+62-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:41:27-74
+63            </intent-filter>
+64        </activity>
+65
+66        <!--
+67            "androidx.core.content.FileProvider" uses to get file from another app
+68            exported="false" - forbids using provider to application without access
+69            grantUriPermissions="true" - accepting permissions to write data in URI
+70        -->
+71        <provider
+71-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:48:9-58:20
+72            android:name="androidx.core.content.FileProvider"
+72-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:49:13-62
+73            android:authorities="com.bignerdranch.android.criminalintent.fileprovider"
+73-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:50:13-87
+74            android:exported="false"
+74-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:51:13-37
+75            android:grantUriPermissions="true" >
+75-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:52:13-47
+76
+77            <!-- creation relation between files.xml and FileProvider -->
+78            <meta-data
+78-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:55:13-57:48
+79                android:name="android.support.FILE_PROVIDER_PATHS"
+79-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:56:17-67
+80                android:resource="@xml/files" />
+80-->D:\MyPrograms\Android\Done\CriminalIntent\app\src\main\AndroidManifest.xml:57:17-46
+81        </provider>
+82
+83        <service
+83-->[androidx.room:room-runtime:2.4.3] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\a51cf2bfc9acb90206e0d6e9e4da9e1b\transformed\room-runtime-2.4.3\AndroidManifest.xml:25:9-28:40
+84            android:name="androidx.room.MultiInstanceInvalidationService"
+84-->[androidx.room:room-runtime:2.4.3] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\a51cf2bfc9acb90206e0d6e9e4da9e1b\transformed\room-runtime-2.4.3\AndroidManifest.xml:26:13-74
+85            android:directBootAware="true"
+85-->[androidx.room:room-runtime:2.4.3] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\a51cf2bfc9acb90206e0d6e9e4da9e1b\transformed\room-runtime-2.4.3\AndroidManifest.xml:27:13-43
+86            android:exported="false" />
+86-->[androidx.room:room-runtime:2.4.3] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\a51cf2bfc9acb90206e0d6e9e4da9e1b\transformed\room-runtime-2.4.3\AndroidManifest.xml:28:13-37
+87
+88        <provider
+88-->[androidx.emoji2:emoji2:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\137e67a0d40e55999d753db94fe512b6\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+89            android:name="androidx.startup.InitializationProvider"
+89-->[androidx.emoji2:emoji2:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\137e67a0d40e55999d753db94fe512b6\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
+90            android:authorities="com.bignerdranch.android.criminalintent.androidx-startup"
+90-->[androidx.emoji2:emoji2:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\137e67a0d40e55999d753db94fe512b6\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
+91            android:exported="false" >
+91-->[androidx.emoji2:emoji2:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\137e67a0d40e55999d753db94fe512b6\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
+92            <meta-data
+92-->[androidx.emoji2:emoji2:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\137e67a0d40e55999d753db94fe512b6\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+93                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+93-->[androidx.emoji2:emoji2:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\137e67a0d40e55999d753db94fe512b6\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
+94                android:value="androidx.startup" />
+94-->[androidx.emoji2:emoji2:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\137e67a0d40e55999d753db94fe512b6\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
+95            <meta-data
+95-->[androidx.lifecycle:lifecycle-process:2.4.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\74937b365b9da734d967fc12c08007f1\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+96                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+96-->[androidx.lifecycle:lifecycle-process:2.4.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\74937b365b9da734d967fc12c08007f1\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+97                android:value="androidx.startup" />
+97-->[androidx.lifecycle:lifecycle-process:2.4.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\74937b365b9da734d967fc12c08007f1\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+98        </provider>
+99    </application>
+100
+101</manifest>
