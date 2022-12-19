@@ -22,6 +22,7 @@ import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bignerdranch.android.criminalintent.databinding.FragmentCrimeBinding
 import android.content.Intent.ACTION_DIAL
+import android.content.pm.PackageInfo
 import android.provider.MediaStore
 import android.widget.*
 import java.io.File
@@ -119,7 +120,11 @@ class CrimeFragment : Fragment() {
             /**
              * @param "com.bignerdranch.android.criminalintent.fileprovider"  - FileProvider.authorities in Manifest
              */
-            photoUri = FileProvider.getUriForFile(requireActivity(), "com.bignerdranch.android.criminalintent.fileprovider", photoFile)
+            photoUri = FileProvider.getUriForFile(
+                requireActivity(),
+                "com.bignerdranch.android.criminalintent.fileprovider",
+                photoFile
+            )
             updateUI()
         }})
 
@@ -284,17 +289,19 @@ class CrimeFragment : Fragment() {
 //            isEnabled = canResolveIntent(cameraIntent)
 
 
-            val packageManager: PackageManager = requireActivity().packageManager
-            val captureImage = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+//            val packageManager: PackageManager = requireActivity().packageManager
+//            val captureImage = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+//
+//            //resolveActivity(Intent) - checking if the activity exists, returns ResolveInfo or null
+//            val resolvedActivity: ResolveInfo? = packageManager.resolveActivity(
+//                captureImage,
+//                PackageManager.MATCH_DEFAULT_ONLY
+//            )
 
-            //resolveActivity(Intent) - checking if the activity exists, returns ResolveInfo or null
-            val resolvedActivity: ResolveInfo? = packageManager.resolveActivity(
-                captureImage,
-                PackageManager.MATCH_DEFAULT_ONLY
-            )
 
-            //if tje camera app doesn't exist, then block the button
-            if (resolvedActivity == null) isEnabled = false
+//            //if tje camera app doesn't exist, then block the button
+//            if (resolvedActivity == null) isEnabled = false
+
 
             setOnClickListener {
 
@@ -604,6 +611,7 @@ class CrimeFragment : Fragment() {
     }
 
     private fun permissionCameraGranted() {
+
         //launching the camera
         pickCamera.launch(photoUri)
     }
@@ -643,7 +651,8 @@ class CrimeFragment : Fragment() {
     }
 
     //doing the photo
-    private val pickCamera = registerForActivityResult(ActivityResultContracts.TakePicture()) { _ ->
+    private val pickCamera = registerForActivityResult(
+        ActivityResultContracts.TakePicture()) { _ ->
 //        if (contactUri != null) {
 //            photoView.setImageURI(photoUri)
 //            updatePhotoView()
@@ -773,6 +782,8 @@ class CrimeFragment : Fragment() {
             intent,
             PackageManager.MATCH_DEFAULT_ONLY
         )
+        //PackageManager.MATCH_DEFAULT_ONLY
+
         return resolveActivity != null
     }
 
